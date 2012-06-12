@@ -17,6 +17,8 @@ set laststatus=2
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+" PowerLine
+let g:Powerline_symbols = 'fancy'
 " Per project vimrc
 set exrc
 " Source vimrc files after editing
