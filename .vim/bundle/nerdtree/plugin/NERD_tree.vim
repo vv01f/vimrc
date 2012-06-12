@@ -63,9 +63,9 @@ call s:initVariable("g:NERDTreeHijackNetrw", 1)
 call s:initVariable("g:NERDTreeMouseMode", 1)
 call s:initVariable("g:NERDTreeNotificationThreshold", 100)
 call s:initVariable("g:NERDTreeQuitOnOpen", 0)
-call s:initVariable("g:NERDTreeShowBookmarks", 0)
+call s:initVariable("g:NERDTreeShowBookmarks", 1)
 call s:initVariable("g:NERDTreeShowFiles", 1)
-call s:initVariable("g:NERDTreeShowHidden", 0)
+call s:initVariable("g:NERDTreeShowHidden", 1)
 call s:initVariable("g:NERDTreeShowLineNumbers", 0)
 call s:initVariable("g:NERDTreeSortDirs", 1)
 call s:initVariable("g:NERDTreeDirArrows", !s:running_windows)
@@ -91,8 +91,8 @@ if !exists('g:NERDTreeStatusline')
     let g:NERDTreeStatusline = "%{exists('b:NERDTreeRoot')?b:NERDTreeRoot.path.str():''}"
 
 endif
-call s:initVariable("g:NERDTreeWinPos", "left")
-call s:initVariable("g:NERDTreeWinSize", 31)
+call s:initVariable("g:NERDTreeWinPos", "right")
+call s:initVariable("g:NERDTreeWinSize", 30)
 
 "init the shell commands that will be used to copy nodes, and remove dir trees
 "

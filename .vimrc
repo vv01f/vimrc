@@ -91,6 +91,8 @@ let mapleader = ","
 nnoremap <Leader>n :NERDTreeToggle<CR>
 " Nerd Tree (reveal current file)
 nnoremap <Leader>f :NERDTree<CR>:NERDTreeClose<cr>:NERDTreeFind<CR>
+" Nerd Tree @ Projects
+nnoremap <Leader>pp :NERDTreeFromBookmark Projects<CR>
 
 " Edit user .vimrc
 nmap <Leader>v :e ~/.vimrc<CR>
