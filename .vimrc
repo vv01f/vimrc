@@ -53,20 +53,24 @@ let g:syntastic_mode_map = { 'mode': 'passive',
 " Syntax highlighting
 syntax on
 " Color Scheme
-colorscheme summerfruit256
+colorscheme jammy
 " Show Line numbers
 set number
+" Highlight LineNumbers
+highlight CursorLineNr guibg=#222222 guifg=LightBlue gui=bold
+highlight LineNr guifg=#aaaa00
 " Visual line marking 80 characters (vim 7.3)
 if v:version >= 703
   set colorcolumn=80
 endif
 " Text-mate style display of invisible characters (tab/newline)
-set listchars=tab:▸\ ,eol:¬
+set listchars=tab:▸\ ,eol:῀
 set list
-highlight NonText guifg=#4a4a59
-highlight SpecialKey guifg=#4a4a59 guibg=NONE
+highlight NonText guifg=#222222
+highlight SpecialKey guifg=#222222 guibg=NONE
 " Highlight active line
 set cursorline
+highlight CursorLine guibg=#222222 guifg=NONE
 " Highlight search results
 set hlsearch
 hi Search guibg=Khaki guifg=Black gui=NONE
@@ -77,9 +81,9 @@ hi Search guibg=Khaki guifg=Black gui=NONE
 " Spaces instead of tabs
 set expandtab
 " 2 spaces for each tab
-set tabstop=2
+set tabstop=4
 " 2 spaces for indention
-set shiftwidth=2
+set shiftwidth=4
 
 " ------------------------------------------------------------------------------
 " Key bindings
