@@ -5,6 +5,8 @@
 set nocompatible
 " Enable pathogen bundle loader
 call pathogen#infect()
+" Source Vtimer
+source ~/.vim/bundle/vtimer/vtimer.vim
 " Recognize file types / set indent mode
 filetype plugin indent on
 " Share OS clipboard
