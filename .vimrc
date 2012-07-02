@@ -128,6 +128,12 @@ nnoremap <leader><space> :!echo -n % \| pbcopy<CR><CR>
 " Show current file as HTML (to paste into Keynote)
 nmap <Leader>h :TOhtml<CR>:w<cr>:!open %<CR>:q<CR>
 
+" Mapping for gundo
+nnoremap <F5> :GundoToggle<CR>
+
+" Mapping for numbers
+nnoremap <F3> :NumbersToggle<CR>
+
 " ------------------------------------------------------------------------------
 " File type specifics *
 " ------------------------------------------------------------------------------
