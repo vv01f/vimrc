@@ -59,7 +59,7 @@ colorscheme jammy
 " Show Line numbers
 set number
 " Highlight LineNumbers
-highlight CursorLineNr guibg=#222222 guifg=LightBlue gui=bold
+highlight CursorLineNr guibg=#222222 guifg=LightBlue ctermfg=lightblue gui=bold
 highlight LineNr guifg=#aaaa00
 " Visual line marking 80 characters (vim 7.3)
 if v:version >= 703
@@ -77,14 +77,18 @@ highlight CursorLine guibg=#222222 guifg=NONE
 set hlsearch
 hi Search guibg=Khaki guifg=Black gui=NONE
 
+" Highlight Popupmenus
+hi Pmenu    guibg=#cde472 ctermbg=185 guifg=#222222 ctermfg=235 gui=NONE
+hi PmenuSel guibg=#e5f1b7 ctermbg=193 guifg=#111111 ctermfg=233 gui=bold
+
 " ------------------------------------------------------------------------------
 " Tabs vs. Spaces
 " ------------------------------------------------------------------------------
 " Spaces instead of tabs
 set expandtab
-" 2 spaces for each tab
+" 4 spaces for each tab
 set tabstop=4
-" 2 spaces for indention
+" 4 spaces for indention
 set shiftwidth=4
 
 " ------------------------------------------------------------------------------
@@ -100,10 +104,20 @@ nnoremap <Leader>f :NERDTree<CR>:NERDTreeClose<cr>:NERDTreeFind<CR>
 " Nerd Tree @ Projects
 nnoremap <Leader><Leader>p :NERDTreeFromBookmark Projects<CR>
 
+" Move between windows
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
 " Edit user .vimrc
 nmap <Leader>v :e ~/.vimrc<CR>
 " Edit project .vimrc
 map <Leader>V :e .vimrc<CR>
+
+" Toggle Spellcheck
+nmap <Leader>sd :set spell! spelllang=de<CR>
+nmap <Leader>se :set spell! spelllang=en<CR>
 
 " Clear search results when hitting space
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
