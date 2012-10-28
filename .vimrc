@@ -47,7 +47,11 @@ let g:snippets_dir="~/.vim/snippets"
 let g:syntastic_mode_map = { 'mode': 'passive',
                            \ 'active_filetypes': ['javascript', 'php'],
                            \ 'passive_filetypes': ['puppet'] }
+"open file at last position
+:au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
+" Gundo to the right
+let g:gundo_right=1
 
 " ------------------------------------------------------------------------------
 " Styling
@@ -66,7 +70,7 @@ if v:version >= 703
   set colorcolumn=80
 endif
 " Text-mate style display of invisible characters (tab/newline)
-set listchars=tab:▸\ ,eol:῀
+set listchars=tab:▸\
 set list
 highlight NonText guifg=#222222
 highlight SpecialKey guifg=#222222 guibg=NONE
@@ -75,7 +79,7 @@ set cursorline
 highlight CursorLine guibg=#222222 guifg=NONE
 " Highlight search results
 set hlsearch
-hi Search guibg=Khaki guifg=Black gui=NONE
+hi Search gui=bold
 
 " Highlight Popupmenus
 hi Pmenu    guibg=#cde472 ctermbg=185 guifg=#222222 ctermfg=235 gui=NONE
@@ -131,16 +135,13 @@ nmap <Leader>h :TOhtml<CR>:w<cr>:!open %<CR>:q<CR>
 " Mapping for gundo
 nnoremap <F5> :GundoToggle<CR>
 
-" Mapping for numbers
-nnoremap <F3> :NumbersToggle<CR>
-
 " ------------------------------------------------------------------------------
 " File type specifics *
 " ------------------------------------------------------------------------------
 " Execute current file with node.js
 autocmd BufEnter *.js nmap <Leader><Leader> :w<CR>:!node %:p<CR>
 " Execute current file with coffee-script node.js
-autocmd BufEnter *.coffee nmap <Leader><Leader> :w<CR>:!coffee %:p<CR>
+autocmd BufEnter *.coffee nmap <Leader><Leader> :w<CR>:!~/local/bin/coffee %:p<CR>
 
 " Recognise file by extension
 autocmd BufEnter *.ctp set filetype=php
