@@ -5,6 +5,8 @@
 set nocompatible
 " encode with uft-8
 set encoding=utf-8
+" enable 256 colors
+set t_Co=256
 " Enable pathogen bundle loader
 call pathogen#infect()
 " Source Vtimer
