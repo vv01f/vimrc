@@ -3,6 +3,8 @@
 " ------------------------------------------------------------------------------
 " Be IMproved
 set nocompatible
+" encode with uft-8
+set encoding=utf-8
 " Enable pathogen bundle loader
 call pathogen#infect()
 " Source Vtimer
@@ -48,10 +50,38 @@ let g:syntastic_mode_map = { 'mode': 'passive',
                            \ 'active_filetypes': ['javascript', 'php'],
                            \ 'passive_filetypes': ['puppet'] }
 "open file at last position
-:au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
-" Gundo to the right
-let g:gundo_right=1
+"autocmd VimEnter * call AutoLoadSession()
+"autocmd VimLeave * call AutoSaveSession()
+
+"function AutoLoadSession()
+    "if argc() == 0
+        "perl << EOD
+        "#use Digest::MD5 qw(md5_hex);
+        "#use Cwd;
+        "#my $session_md5_hash = md5_hex(cwd());
+        "#my $session_path = "$ENV{HOME}/.vim/sessions/$session_md5_hash.session";
+        "#if (-e $session_path){
+            "#VIM::DoCommand
+            "#( "silent source $session_path" );
+        "}
+"EOD
+    "endif
+"endfunction
+
+"function AutoSaveSession()
+    "if argc() == 0
+        "perl << EOD
+        "#use Digest::MD5 qw(md5_hex);
+        "#use Cwd;
+        "#my $session_md5_hash = md5_hex(cwd());
+        "#my $session_path = "$ENV{HOME}/.vim/sessions/$session_md5_hash.session";
+        "#VIM::DoCommand
+        "#( "silent mksession! $session_path" );
+"EOD
+    "endif
+"endfunction
 
 " ------------------------------------------------------------------------------
 " Styling
@@ -59,31 +89,35 @@ let g:gundo_right=1
 " Syntax highlighting
 syntax on
 " Color Scheme
-colorscheme jammy
+colorscheme codesweets
 " Show Line numbers
 set number
-" Highlight LineNumbers
-highlight CursorLineNr guibg=#222222 guifg=LightBlue ctermfg=lightblue gui=bold
-highlight LineNr guifg=#aaaa00
 " Visual line marking 80 characters (vim 7.3)
 if v:version >= 703
   set colorcolumn=80
 endif
 " Text-mate style display of invisible characters (tab/newline)
-set listchars=tab:▸\
+set listchars=tab:‣\ 
 set list
 highlight NonText guifg=#222222
 highlight SpecialKey guifg=#222222 guibg=NONE
+" show wrapped lines
+set showbreak=▸\ 
 " Highlight active line
 set cursorline
-highlight CursorLine guibg=#222222 guifg=NONE
 " Highlight search results
 set hlsearch
 hi Search gui=bold
+" toggle CursorLineNr hightting
+autocmd InsertEnter * hi CursorLineNr ctermbg=24  ctermfg=15
+autocmd InsertLeave * hi CursorLineNr ctermbg=238 ctermfg=154
+
+" Gundo to the right
+let g:gundo_right=1
 
 " Highlight Popupmenus
-hi Pmenu    guibg=#cde472 ctermbg=185 guifg=#222222 ctermfg=235 gui=NONE
-hi PmenuSel guibg=#e5f1b7 ctermbg=193 guifg=#111111 ctermfg=233 gui=bold
+" hi Pmenu    guibg=#cde472 ctermbg=185 guifg=#222222 ctermfg=235 gui=NONE
+" hi PmenuSel guibg=#e5f1b7 ctermbg=193 guifg=#111111 ctermfg=233 gui=bold
 
 " ------------------------------------------------------------------------------
 " Tabs vs. Spaces
@@ -92,7 +126,7 @@ hi PmenuSel guibg=#e5f1b7 ctermbg=193 guifg=#111111 ctermfg=233 gui=bold
 set expandtab
 " 4 spaces for each tab
 set tabstop=4
-" 4 spaces for indention
+" 4 spaces for indention::
 set shiftwidth=4
 
 " ------------------------------------------------------------------------------
@@ -107,6 +141,8 @@ nnoremap <Leader>n :NERDTreeToggle<CR>
 nnoremap <Leader>f :NERDTree<CR>:NERDTreeClose<cr>:NERDTreeFind<CR>
 " Nerd Tree @ Projects
 nnoremap <Leader><Leader>p :NERDTreeFromBookmark Projects<CR>
+" BufExplorer toggle
+nnoremap <Leader>b :BufExplorerHorizontalSplit<CR>
 
 " Move between windows
 map <C-h> <C-w>h
@@ -142,6 +178,8 @@ nnoremap <F5> :GundoToggle<CR>
 autocmd BufEnter *.js nmap <Leader><Leader> :w<CR>:!node %:p<CR>
 " Execute current file with coffee-script node.js
 autocmd BufEnter *.coffee nmap <Leader><Leader> :w<CR>:!~/local/bin/coffee %:p<CR>
+" start new *.c with a template
+autocmd BufNewFile *.c 0r ~/.vim/skeleton.c
 
 " Recognise file by extension
 autocmd BufEnter *.ctp set filetype=php
