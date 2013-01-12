@@ -101,6 +101,9 @@ endif
 " Text-mate style display of invisible characters (tab/newline)
 set listchars=tab:‣\ 
 set list
+" Wildmenu
+set wildmenu
+
 highlight NonText guifg=#222222
 highlight SpecialKey guifg=#222222 guibg=NONE
 " show wrapped lines
@@ -116,10 +119,6 @@ autocmd InsertLeave * hi CursorLineNr ctermbg=238 ctermfg=154
 
 " Gundo to the right
 let g:gundo_right=1
-
-" Highlight Popupmenus
-" hi Pmenu    guibg=#cde472 ctermbg=185 guifg=#222222 ctermfg=235 gui=NONE
-" hi PmenuSel guibg=#e5f1b7 ctermbg=193 guifg=#111111 ctermfg=233 gui=bold
 
 " ------------------------------------------------------------------------------
 " Tabs vs. Spaces
