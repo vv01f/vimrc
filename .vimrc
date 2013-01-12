@@ -54,36 +54,36 @@ let g:syntastic_mode_map = { 'mode': 'passive',
 "open file at last position
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
-"autocmd VimEnter * call AutoLoadSession()
-"autocmd VimLeave * call AutoSaveSession()
+autocmd VimEnter * call AutoLoadSession()
+autocmd VimLeave * call AutoSaveSession()
 
-"function AutoLoadSession()
-    "if argc() == 0
-        "perl << EOD
-        "#use Digest::MD5 qw(md5_hex);
-        "#use Cwd;
-        "#my $session_md5_hash = md5_hex(cwd());
-        "#my $session_path = "$ENV{HOME}/.vim/sessions/$session_md5_hash.session";
-        "#if (-e $session_path){
-            "#VIM::DoCommand
-            "#( "silent source $session_path" );
-        "}
-"EOD
-    "endif
-"endfunction
+function AutoLoadSession()
+    if argc() == 0
+        perl << EOD
+        use Digest::MD5 qw(md5_hex);
+        use Cwd;
+        my $session_md5_hash = md5_hex(cwd());
+        my $session_path = "$ENV{HOME}/.vim/sessions/$session_md5_hash.session";
+        if (-e $session_path){
+            VIM::DoCommand
+            ( "silent source $session_path" );
+        }
+EOD
+    endif
+endfunction
 
-"function AutoSaveSession()
-    "if argc() == 0
-        "perl << EOD
-        "#use Digest::MD5 qw(md5_hex);
-        "#use Cwd;
-        "#my $session_md5_hash = md5_hex(cwd());
-        "#my $session_path = "$ENV{HOME}/.vim/sessions/$session_md5_hash.session";
-        "#VIM::DoCommand
-        "#( "silent mksession! $session_path" );
-"EOD
-    "endif
-"endfunction
+function AutoSaveSession()
+    if argc() == 0
+        perl << EOD
+        use Digest::MD5 qw(md5_hex);
+        use Cwd;
+        my $session_md5_hash = md5_hex(cwd());
+        my $session_path = "$ENV{HOME}/.vim/sessions/$session_md5_hash.session";
+        VIM::DoCommand
+        ( "silent mksession! $session_path" );
+EOD
+    endif
+endfunction
 
 " ------------------------------------------------------------------------------
 " Styling
