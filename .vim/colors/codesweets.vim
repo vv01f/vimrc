@@ -1,4 +1,4 @@
-" Vim color file -- candycode
+" Vim color file -- codesweets
 " Maintainer:   eri! 451 van Buffellow <hans.orter@gmx.de>
 " Last Change:  2012 Dec 5
 
@@ -66,9 +66,9 @@ hi StatusLine   guifg=#000000       guibg=#c2bfa5       gui=bold
 "hi StatusLineNC guifg=#444444       guibg=#c2bfa5       gui=NONE
 "            \   ctermfg=darkgray    ctermbg=white       cterm=NONE
 hi WildMenu     guifg=#ffffff       guibg=#133293       gui=bold
-            \   ctermfg=238          ctermbg=154        cterm=bold
+            \   ctermfg=238         ctermbg=154        cterm=bold
 hi VertSplit    guifg=#c2bfa5       guibg=#c2bfa5       gui=NONE
-            \   ctermfg=white       ctermbg=white       cterm=NONE
+            \   ctermfg=238         ctermbg=238         cterm=NONE
 
 hi TabLine      guifg=#000000       guibg=#c2bfa5       gui=NONE
             \   ctermfg=253         ctermbg=8           cterm=NONE
