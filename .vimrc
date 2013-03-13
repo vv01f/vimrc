@@ -127,7 +127,7 @@ set hlsearch
 hi Search gui=bold
 
 " toggle CursorLineNr hightting
-autocmd InsertEnter * hi CursorLineNr ctermbg=24  ctermfg=15
+autocmd InsertEnter * hi CursorLineNr ctermbg=24  ctermfg=231
 autocmd InsertLeave * hi CursorLineNr ctermbg=238 ctermfg=154
 
 " Gundo to the right
