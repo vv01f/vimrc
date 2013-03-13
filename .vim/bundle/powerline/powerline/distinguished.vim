@@ -8,7 +8,7 @@ endfunction " }}}
 function! Stl_GetBranch(branch_symbol) " {{{
 	let ret = fugitive#statusline()
 
-	let ret = substitute(ret, 'GIT(\([a-z0-9\-_\./:]\+\))', ' '. a:branch_symbol .' \1 ', 'gi')
+	let ret = substitute(ret, '\[Git(\([a-z0-9\-_\./:]*\))\]', ' '. a:branch_symbol .' \1 ', 'g')
 
 	return ret
 endfunction " }}}

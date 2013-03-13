@@ -90,9 +90,21 @@ call Pl#Statusline(
 			\ Pl#HiNonCurrent(Pl#FG(245))
 			\ ),
 		\ Pl#Segment(":%-2c ",
-			\ Pl#HiCurrent(   Pl#FG(244)),
+			\ Pl#HiCurrent(   Pl#FG(238)),
 			\ Pl#HiInsert(    Pl#FG( 23)),
-			\ Pl#HiNonCurrent(Pl#FG(241))
+			\ Pl#HiNonCurrent(Pl#FG(243))
+			\ )
+		\ ),
+	\
+	\ Pl#SegmentGroup(
+		\ Pl#HiCurrent(   Pl#BG(252)),
+		\ Pl#HiInsert(    Pl#BG(117)),
+        \ Pl#HiNonCurrent(Pl#BG(235)),
+		\
+		\ Pl#Segment(" %n ",
+			\ Pl#HiCurrent(   Pl#FG( 27), Pl#Attr('bold')),
+			\ Pl#HiInsert(    Pl#FG( 23), Pl#Attr('bold')),
+			\ Pl#HiNonCurrent(Pl#FG(245))
 			\ )
 		\ )
 	\ )
