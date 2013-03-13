@@ -1,3 +1,4 @@
+if &term == "xterm-256color" || &term == "rxvt-unicode-256color"
 " ------------------------------------------------------------------------------
 " Basics
 " ------------------------------------------------------------------------------
@@ -90,29 +91,41 @@ endfunction
 " ------------------------------------------------------------------------------
 " Syntax highlighting
 syntax on
+
 " Color Scheme
 colorscheme codesweets
+
 " Show Line numbers
 set number
+
+" Show Tabline when needed
+set showtabline=1
+
 " Visual line marking 80 characters (vim 7.3)
 if v:version >= 703
   set colorcolumn=80
 endif
+
 " Text-mate style display of invisible characters (tab/newline)
 set listchars=tab:‣\ 
 set list
+
 " Wildmenu
 set wildmenu
 
 highlight NonText guifg=#222222
 highlight SpecialKey guifg=#222222 guibg=NONE
+
 " show wrapped lines
 set showbreak=▸\ 
+
 " Highlight active line
 set cursorline
+
 " Highlight search results
 set hlsearch
 hi Search gui=bold
+
 " toggle CursorLineNr hightting
 autocmd InsertEnter * hi CursorLineNr ctermbg=24  ctermfg=15
 autocmd InsertLeave * hi CursorLineNr ctermbg=238 ctermfg=154
@@ -150,6 +163,10 @@ map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
+
+" Navigation
+inoremap jj <Esc>
+inoremap kk <Esc>
 
 " Edit user .vimrc
 nmap <Leader>v :e ~/.vimrc<CR>
@@ -192,3 +209,11 @@ autocmd BufEnter *.ejs set filetype=html
 
 " Magic to make ledger work
 au BufNewFile,BufRead *.ldg,*.ledger setf ledger | comp ledger
+"------------------------------------------------------------------------------
+"Alternativ RC for more flex
+"------------------------------------------------------------------------------
+elseif &term == "screen-256color"
+    source ~/.vim/rcs/tmux.vim
+else
+    source ~/.vim/rcs/default.vim
+endif
