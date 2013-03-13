@@ -99,7 +99,7 @@ call Pl#Statusline(
 	\ Pl#SegmentGroup(
 		\ Pl#HiCurrent(   Pl#BG(252)),
 		\ Pl#HiInsert(    Pl#BG(117)),
-        \ Pl#HiNonCurrent(Pl#BG(235)),
+		\ Pl#HiNonCurrent(Pl#BG(235)),
 		\
 		\ Pl#Segment(" %n ",
 			\ Pl#HiCurrent(   Pl#FG( 27), Pl#Attr('bold')),
