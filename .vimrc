@@ -155,8 +155,8 @@ nnoremap <Leader>n :NERDTreeToggle<CR>
 nnoremap <Leader>f :NERDTree<CR>:NERDTreeClose<cr>:NERDTreeFind<CR>
 " Nerd Tree @ Projects
 nnoremap <Leader><Leader>p :NERDTreeFromBookmark Projects<CR>
-" BufExplorer toggle
-nnoremap <Leader>b :BufExplorerHorizontalSplit<CR>
+" Tagbar toggle
+nmap <F8> :TagbarToggle<CR>
 
 " Move between windows
 map <C-h> <C-w>h
