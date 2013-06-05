@@ -27,11 +27,6 @@ call Pl#Statusline(
 			\ Pl#HiInsert(    Pl#FG(231), Pl#Attr('bold')),
 			\ Pl#HiNonCurrent(Pl#FG(245), Pl#Attr('bold'))
 			\ ),
-		\ Pl#Segment(" %{strftime(\"%d-%m-%y - %H:%M\")} ",
-			\ Pl#HiCurrent(   Pl#FG(231)),
-			\ Pl#HiInsert(    Pl#FG(231)),
-			\ Pl#HiNonCurrent(Pl#FG(245))
-			\ ),
 		\ Pl#Segment("%M ",
 			\ Pl#HiCurrent(   Pl#FG(196), Pl#Attr('bold')),
 			\ Pl#HiInsert(    Pl#FG(196), Pl#Attr('bold')),
