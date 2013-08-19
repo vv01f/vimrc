@@ -1,4 +1,4 @@
-if &term == "xterm-256color" || &term == "rxvt-unicode-256color"
+if &term == "xterm-256color" || &term == "rxvt-unicode-256color" || &term == "screen-256color"
 " ------------------------------------------------------------------------------
 " Basics
 " ------------------------------------------------------------------------------
@@ -10,8 +10,18 @@ set encoding=utf-8
 set t_Co=256
 " Enable pathogen bundle loader
 call pathogen#infect()
-" Source Vtimer
-source ~/.vim/bundle/vtimer/vtimer.vim
+
+" Vundle
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required!
+Bundle 'gmarik/vundle'
+
+" My Bundles
+Bundle 'Valloric/YouCompleteMe'
+
 " Recognize file types / set indent mode
 filetype plugin indent on
 " Share OS clipboard
@@ -54,37 +64,6 @@ let g:syntastic_mode_map = { 'mode': 'passive',
                            \ 'passive_filetypes': ['puppet'] }
 "open file at last position
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-
-autocmd VimEnter * call AutoLoadSession()
-autocmd VimLeave * call AutoSaveSession()
-
-function AutoLoadSession()
-    if argc() == 0
-        perl << EOD
-        use Digest::MD5 qw(md5_hex);
-        use Cwd;
-        my $session_md5_hash = md5_hex(cwd());
-        my $session_path = "$ENV{HOME}/.vim/sessions/$session_md5_hash.session";
-        if (-e $session_path){
-            VIM::DoCommand
-            ( "silent source $session_path" );
-        }
-EOD
-    endif
-endfunction
-
-function AutoSaveSession()
-    if argc() == 0
-        perl << EOD
-        use Digest::MD5 qw(md5_hex);
-        use Cwd;
-        my $session_md5_hash = md5_hex(cwd());
-        my $session_path = "$ENV{HOME}/.vim/sessions/$session_md5_hash.session";
-        VIM::DoCommand
-        ( "silent mksession! $session_path" );
-EOD
-    endif
-endfunction
 
 " ------------------------------------------------------------------------------
 " Styling
@@ -212,8 +191,6 @@ au BufNewFile,BufRead *.ldg,*.ledger setf ledger | comp ledger
 "------------------------------------------------------------------------------
 "Alternativ RC for more flex
 "------------------------------------------------------------------------------
-elseif &term == "screen-256color"
-    source ~/.vim/rcs/tmux.vim
 else
     source ~/.vim/rcs/default.vim
 endif
